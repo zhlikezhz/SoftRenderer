@@ -7,6 +7,7 @@ public:
 public:
 	Vector3();
 	~Vector3();
+	Vector3(float, float, float);
 
 	float Mod() const;
 	Vector3 operator*(float num) const;
@@ -14,6 +15,7 @@ public:
 	Vector3 operator-(const Vector3& vec) const;
 
 public:
+	static Vector3 Normalize(const Vector3& vec);
 	static float Dot(const Vector3& vec1, const Vector3& vec2);
 	static float Angle(const Vector3& vec1, const Vector3& vec2);
 	static Vector3 Cross(const Vector3& vec1, const Vector3& vec2);

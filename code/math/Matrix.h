@@ -1,5 +1,7 @@
 #pragma once
 #include "Vector3.h"
+#define M_PI 3.14159265358979323846
+#include <cmath>
 
 struct Vector4
 {
@@ -21,25 +23,15 @@ struct Vector4
 	}
 };
 
-struct Matrix4x4
-{
-	Vector4 vec[4];
-
-	Matrix4x4(Vector4 vec1, Vector4 vec2, Vector4 vec3, Vector4 vec4)
-	{
-		vec[0] = vec1;
-		vec[1] = vec2;
-		vec[2] = vec3;
-		vec[3] = vec4;
-	}
-};
-
-class Matrix
+class Matrix4x4
 {
 private:
-	virtual ~Matrix() = 0;
+	Vector4 vector[4];
 
 public:
-	static Vector4 LinearTransformation(Vector4& vec, Matrix4x4& matrix);
+	Matrix4x4();
+	Matrix4x4(float, float, float);
+	Matrix4x4(Vector3&, Vector3&, Vector3&, Vector3&);
+	Matrix4x4 operator*(const Matrix4x4&);
+	Vector4 operator*(const Vector4& vec);
 };
-

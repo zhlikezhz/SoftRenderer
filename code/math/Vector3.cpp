@@ -9,6 +9,12 @@ Vector3::Vector3()
 
 }
 
+Vector3::Vector3(float x, float y, float z)
+{
+	this->x = x;
+	this->y = y;
+	this->z = z;
+}
 
 Vector3::~Vector3()
 {
@@ -17,10 +23,7 @@ Vector3::~Vector3()
 
 float Vector3::Mod() const
 {
-	float mod = 0.0f;
-	mod += x * x;
-	mod += y * y;
-	mod += z * z;
+	float mod = x * x + y * y + z * z;
 	return std::sqrt(mod);
 }
 
@@ -49,6 +52,12 @@ Vector3 Vector3::operator-(const Vector3& vec) const
 	result.y = y - vec.y;
 	result.z = z - vec.z;
 	return result;
+}
+
+Vector3 Vector3::Normalize(const Vector3& vec)
+{
+	float mod = vec.Mod();
+	return Vector3(vec.x / mod, vec.y / mod, vec.z / mod);
 }
 
 float Vector3::Dot(const Vector3& vec1, const Vector3& vec2)
